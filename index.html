@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>eco-zine-overview2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#111;
+      --muted:#444;            /* etwas kräftiger für Kontrast auf dem BG */
+      --border:#e6e6e6;
+      --maxw:860px;
+      --radius:12px;
+      --bgimg: url('assets/zine-page1.jpg'); /* <— HIER dein exportiertes Bild */
+      --overlay: rgba(255,255,255,0.75);     /* Lesbarkeits-Overlay */
+    }
+
+    html,body{
+      margin:0; padding:0;
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--fg);
+      min-height:100dvh;
+    }
+
+    /* Vollflächiges Hintergrundbild */
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      background-image: var(--bgimg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transform: translateZ(0); /* hilft bei Mobile-Rendering */
+      z-index:-2;
+    }
+
+    /* leichte Milchglas-Schicht (optional, verbessert Lesbarkeit) */
+    body::after{
+      content:"";
+      position:fixed; inset:0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.65), rgba(255,255,255,0.85));
+      backdrop-filter: blur(1.5px);
+      z-index:-1;
+    }
+
+    .wrap{
+      max-width:var(--maxw);
+      margin:56px auto;
+      padding:0 20px;
+    }
+
+    header h1{font-size:clamp(1.6rem,2.2vw,2.2rem); margin:0 0 10px 0;}
+    header p{color:var(--muted); margin:0 0 28px 0;}
+    h2{font-size:1.15rem; margin:30px 0 10px 0}
+    p{margin:10px 0;}
+
+    /* Karten-Optik mit halbtransparentem Weiß auf dem BG */
+    .card{
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px;
+      background: var(--overlay);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+      -webkit-backdrop-filter: blur(2px);
+      backdrop-filter: blur(2px);
+    }
+    .muted{color:var(--muted);}
+
+    /* CTA grid */
+    .cta-grid{
+      display:grid; gap:18px;
+      grid-template-columns: 1.2fr 1fr; /* text | small previews */
+      align-items:start;
+    }
+    .thumbs{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+    .thumb iframe{
+      width:100%; height:220px; border:1px solid var(--border); border-radius:8px;
+      background:#fafafa;
+    }
+    .thumb a{display:block; text-decoration:none;}
+    .thumb small{display:block; text-align:center; margin-top:6px; color:var(--muted);}
+
+    a{color:inherit; text-underline-offset:3px;}
+    a:hover{text-decoration:underline;}
+
+    /* Zine-Viewer + Button */
+    .viewer{margin-top:24px;}
+    .viewer .controls{
+      display:flex; gap:12px; align-items:center; margin:8px 0 12px 0;
+    }
+    .btn{
+      display:inline-block; padding:10px 14px; border-radius:10px;
+      border:1px solid var(--border); text-decoration:none;
+      background:rgba(255,255,255,0.9);
+      box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    }
+    .btn:hover{background:#fff;}
+
+    .viewer embed{
+      width:100%; height:680px;
+      border:1px solid var(--border); border-radius:8px;
+      background:#fafafa;
+    }
+
+    /* Responsive */
+    @media (max-width:820px){
+      .cta-grid{grid-template-columns:1fr;}
+      .thumbs{grid-template-columns:1fr 1fr;}
+      .viewer embed{height:65vh;}
+      .wrap{margin:36px auto;}
+    }
+
+    /* Fallback für sehr alte Browser ohne backdrop-filter */
+    @supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))){
+      .card{background: rgba(255,255,255,0.92);}
+      body::after{background: rgba(255,255,255,0.85);}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="card">
+      <h1>Ein kollaboratives Zine zum Ökofeminismus</h1>
+      <p class="muted">ein kleines, offenes projekt aus einem seminar zur kollaborativen wissensproduktion</p>
+    </header>
+
+    <section class="card">
+      <p>
+        Das Zine entstand, weil wir etwas Kleines schaffen wollten, das <em>aus der Uni in die Welt</em> geht:
+        zugänglich, kollaborativ und mehrstimmig. Wir haben einen kurzen <strong>Call to Action</strong> gestartet, Beiträge gesammelt
+        und ein Zine mit theoretischen Mini-Texten und künstlerischen Einsendungen gestaltet.
+      </p>
+    </section>
+
+    <section>
+      <h2>Was ist eigentlich ein Zine?</h2>
+      <p class="card">
+        Ein Zine ist ein selbstgemachtes, unabhängiges Mini-Magazin. Es ist niedrigschwellig, lädt zur Beteiligung ein und lässt
+        Raum für alternative Stimmen &amp; Formate – irgendwo zwischen Wissenschaft, Kunst und Aktivismus.
+      </p>
+    </section>
+
+    <section>
+      <h2>Schickt uns eure Beiträge!</h2>
+      <div class="cta-grid card">
+        <div>
+          <p>
+            Unser zweiseitiger Call erklärt kurz, wie und warum wir sammeln. Wenn du neugierig bist:
+            <a href="CallToAction.pdf" target="_blank" rel="noopener">Hier den vollständigen Call öffnen</a>.
+          </p>
+          <p class="muted">Kleiner Einblick rechts: Seite&nbsp;1 und Seite&nbsp;2 als Mini-Vorschau. Klick vergrößert.</p>
+        </div>
+
+        <!-- Kleine Previews (Seite 1 & 2) -->
+        <div class="thumbs">
+          <div class="thumb">
+            <a href="CallToAction.pdf" target="_blank" rel="noopener" title="Call to Action – Seite 1 (groß öffnen)">
+              <iframe src="CallToAction.pdf#page=1" title="Call to Action – Seite 1" loading="lazy"></iframe>
+              <small>Seite&nbsp;1</small>
+            </a>
+          </div>
+          <div class="thumb">
+            <a href="CallToAction.pdf" target="_blank" rel="noopener" title="Call to Action – Seite 2 (groß öffnen)">
+              <iframe src="CallToAction.pdf#page=2" title="Call to Action – Seite 2" loading="lazy"></iframe>
+              <small>Seite&nbsp;2</small>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Was euch im Zine erwartet</h2>
+      <p class="card">
+        Kurze theoretische Impulse zu ökofeministischen Perspektiven, künstlerische Beiträge und persönliche Einsendungen.
+        Ein kollektives Experiment – klein, aber offen.
+        <br><br>
+        <strong>Viel Spaß beim Lesen,</strong><br>Antonia :)
+      </p>
+    </section>
+
+    <section class="viewer">
+      <h2>Zine 2023</h2>
+      <div class="controls">
+        <a class="btn" href="Zine2023.pdf" download>⬇️ Zine als PDF herunterladen</a>
+        <a class="btn" href="Zine2023.pdf" target="_blank" rel="noopener">🔍 In neuem Tab öffnen</a>
+      </div>
+      <embed src="Zine2023.pdf" type="application/pdf" />
+      <noscript>
+        <p class="card">Falls die Einbettung nicht lädt: <a href="Zine2023.pdf" target="_blank" rel="noopener">Zine hier öffnen</a>.</p>
+      </noscript>
+    </section>
+  </main>
+</body>
+</html>
