@@ -27,7 +27,19 @@
       font-size:0.9rem;
       line-height:1.35;
     }
-    .hero-text h1{margin-top:0}
+    .hero-text h1{
+      margin-top:0;
+      font-size:1.15rem;               /* etwas kleiner */
+      line-height:1.25;
+      letter-spacing:.2px;
+    }
+    /* kleinere Unterüberschriften */
+    .hero-text h2{
+      font-size:0.95rem;
+      margin:10px 0 6px;
+      line-height:1.2;
+    }
+
     .viewer{
       flex:1.4;           /* rechte Spalte breiter */
     }
@@ -36,6 +48,7 @@
       height:85vh;
       border:1px solid #ccc;
       border-radius:6px;
+      background:#fafafa;
     }
 
     .mini-call{
@@ -44,6 +57,17 @@
     }
     .mini-call iframe{width:100%; height:110px; border:0}
     .mini-call small{display:block; text-align:center; font-size:.75rem; color:#666}
+
+    /* "Unser Call" dezent hervorheben */
+    .call-section{
+      background:#f8f8f8;
+      border:1px solid #e6e6e6;
+      border-left:4px solid #c8c8c8;
+      border-radius:6px;
+      padding:10px 12px;
+      margin-top:8px;
+    }
+    .call-section h2{ margin-top:4px }
 
     footer{
       margin:20px 0;
@@ -66,7 +90,7 @@
       <div class="hero-text">
         <h1>Ein kleines Zine zum Ökofeminismus</h1>
 
-        <h2>Was ist ein Zine</h2>
+        <h2>Was ist ein Zine?</h2>
         <p>
           Ein Zine (ausgesprochen ziːn, wie „seen“) ist ein meist selbstveröffentlichtes, unabhängig gestaltetes Heft in kleiner Auflage.
           Es ist nidrigschwellig, lädt zur Beteiligung ein und lässt Raum für vielfältige Stimmen, Inhalte und Formate – zwischen Wissenschaft, Kunst und Aktivismus.
@@ -85,25 +109,27 @@
           <br><br><strong>Viel Spaß beim Lesen!</strong>
         </p>
 
-        <h2>Unser Call</h2>
-        <p>
-          Den Call haben wir einfach verteilt und darin nach Beiträgen verschiedenster Art gefragt. 
-          Was uns dadurch zugetragen wurde haben wir dann zu einem Zine zusammengebastelt.
-        </p>
-        <p><a href="CallToAction.pdf" target="_blank">Call als PDF</a></p>
+        <div class="call-section">
+          <h2>Unser Call</h2>
+          <p>
+            Den Call haben wir einfach verteilt und darin nach Beiträgen verschiedenster Art gefragt. 
+            Was uns dadurch zugetragen wurde haben wir dann zu einem Zine zusammengebastelt.
+          </p>
+          <p><a href="CallToAction.pdf" target="_blank">Call als PDF</a></p>
 
-        <div class="mini-call">
-          <a href="CallToAction.pdf" target="_blank">
-            <iframe src="CallToAction.pdf#page=1"></iframe>
-            <small>Vorschau</small>
-          </a>
+          <div class="mini-call">
+            <a href="CallToAction.pdf" target="_blank">
+              <iframe src="CallToAction.pdf#page=1" title="Call to Action – Seite 1"></iframe>
+              <small>Vorschau</small>
+            </a>
+          </div>
         </div>
       </div>
 
       <div class="viewer">
         <embed src="Zine2023.pdf" type="application/pdf" />
-        <p style="text-align:center; font-size:.85rem; color:#666">
-          Falls die Einbettung nicht lädt: <a href="Zine2023.pdf" target="_blank">hier öffnen</a>
+        <p style="text-align:center; font-size:.85rem; color:#666; margin-top:6px">
+          Zum Lesen einfach scrollen – oder falls die Einbettung nicht lädt: <a href="Zine2023.pdf" target="_blank" rel="noopener">hier öffnen</a>
         </p>
       </div>
     </section>
