@@ -5,95 +5,64 @@
   <title>Ökofeminismus Zine – Arbeitsprobe</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    :root{
-      --bg:#ffffff;
-      --fg:#111;
-      --muted:#666;
-      --border:#e6e6e6;
-      --maxw:1200px;
-    }
-    html,body{
-      background:var(--bg);
-      color:var(--fg);
+    body{
       margin:0;
-      padding:0;
-      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      font:15px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:#fff; color:#111;
     }
-    a{color:inherit}
-    .wrap{max-width:var(--maxw); margin:14px auto; padding:0 12px;}
+    .wrap{
+      max-width:1400px;   /* groß genug, damit Platz ist */
+      margin:0 auto;
+      padding:20px;
+    }
 
-    /* HERO: Erklärung links (kompakt), PDF rechts */
+    /* Flex statt Grid: links–rechts */
     .hero{
-      display:grid;
-      grid-template-columns: 1fr 1.3fr; /* links Erklärung, rechts PDF */
+      display:flex;
       gap:20px;
-      align-items:start;
-      margin-bottom:14px;
+      align-items:flex-start;
     }
     .hero-text{
-      font-size:0.88rem;
+      flex:1;             /* linke Spalte nimmt 1 Teil */
+      font-size:0.9rem;
       line-height:1.35;
     }
-    .hero-text h1{
-      font-size:1.4rem;
-      margin:0 0 6px;
+    .hero-text h1{margin-top:0}
+    .viewer{
+      flex:1.4;           /* rechte Spalte breiter */
     }
-    .hero-text h2{
-      font-size:1rem;
-      margin:8px 0 4px;
-    }
-    .hero-text p{
-      margin:6px 0;
-    }
-
-    /* Call-Vorschau klein */
-    .mini-call{
-      width:130px;
-      border:1px solid var(--border);
-      border-radius:6px;
-      background:#fafafa;
-      overflow:hidden;
-      margin:6px 0;
-    }
-    .mini-call iframe{width:100%; height:100px; border:0; display:block}
-    .mini-call small{display:block; text-align:center; font-size:.75rem; padding:3px; color:var(--muted)}
-
-    /* PDF rechts groß */
     .viewer embed{
       width:100%;
-      height:84vh;
-      border:1px solid var(--border);
+      height:85vh;
+      border:1px solid #ccc;
       border-radius:6px;
-      background:#fafafa;
     }
-    .muted{color:var(--muted); font-size:.92rem}
+
+    .mini-call{
+      width:140px; margin:8px 0;
+      border:1px solid #ccc; border-radius:6px; overflow:hidden;
+    }
+    .mini-call iframe{width:100%; height:110px; border:0}
+    .mini-call small{display:block; text-align:center; font-size:.75rem; color:#666}
 
     footer{
-      margin:18px 0 24px;
-      color:var(--muted);
-      font-size:.85rem;
-      border-top:1px solid var(--border);
-    }
-    .footgrid{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
+      margin:20px 0;
+      border-top:1px solid #ccc;
       padding-top:10px;
-      flex-wrap:wrap;
+      font-size:.85rem; color:#666;
+      display:flex; justify-content:space-between;
     }
 
-    /* nur auf sehr schmalen Screens stapeln */
-    @media (max-width:600px){
-      .hero{grid-template-columns:1fr}
+    /* nur auf Handy stapeln */
+    @media (max-width:700px){
+      .hero{flex-direction:column}
       .viewer embed{height:70vh}
     }
   </style>
 </head>
 <body>
   <main class="wrap">
-
-    <!-- HERO: links gesamte Erklärung (kompakt), rechts PDF -->
-    <section class="hero" id="oben">
+    <section class="hero">
       <div class="hero-text">
         <h1>Ein kleines Zine zum Ökofeminismus</h1>
 
@@ -110,45 +79,39 @@
           zugänglich, mehrstimmig und kollaborativ zu gestalten.
         </p>
 
-        <!-- Direkter Anschluss: "Was euch im Zine erwartet" (ohne Überschrift) -->
         <p>
           Kurze theoretische Impulse zu ökofeministischen Perspektiven, künstlerische Beiträge und persönliche Einsendungen und mehr.
           Nachdem es leider erstmal keine physischen Exemplare mehr gibt wollte ich hier eine kleine Gelegenheit schaffen noch digital reinschauen zu können. 
-          <br><br>
-          <strong>Viel Spaß beim Lesen!</strong>
+          <br><br><strong>Viel Spaß beim Lesen!</strong>
         </p>
 
-        <!-- Danach der Call-Teil -->
         <h2>Unser Call</h2>
         <p>
           Den Call haben wir einfach verteilt und darin nach Beiträgen verschiedenster Art gefragt. 
           Was uns dadurch zugetragen wurde haben wir dann zu einem Zine zusammengebastelt.
         </p>
-        <p><a href="CallToAction.pdf" target="_blank" rel="noopener" style="text-decoration:underline">Call als PDF</a></p>
+        <p><a href="CallToAction.pdf" target="_blank">Call als PDF</a></p>
 
-        <!-- kleine Vorschau-Icon -->
         <div class="mini-call">
-          <a href="CallToAction.pdf" target="_blank" rel="noopener" title="Call to Action – Seite 1 (groß öffnen)">
-            <iframe src="CallToAction.pdf#page=1" title="Call to Action – Seite 1" loading="lazy"></iframe>
+          <a href="CallToAction.pdf" target="_blank">
+            <iframe src="CallToAction.pdf#page=1"></iframe>
             <small>Vorschau</small>
           </a>
         </div>
       </div>
 
-      <div class="viewer" id="zine2023">
+      <div class="viewer">
         <embed src="Zine2023.pdf" type="application/pdf" />
-        <p class="muted" style="text-align:center; margin-top:6px">
-          Falls die Einbettung nicht lädt: <a href="Zine2023.pdf" target="_blank" rel="noopener" style="text-decoration:underline">hier öffnen</a>
+        <p style="text-align:center; font-size:.85rem; color:#666">
+          Falls die Einbettung nicht lädt: <a href="Zine2023.pdf" target="_blank">hier öffnen</a>
         </p>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="wrap footgrid">
-      <small>© 2023–2025 Projektgruppe „Ökofeminismus Zine“</small>
-      <small>Kontakt: <a href="mailto:antonia.kreutzer@gmx.de">antonia.kreutzer@gmx.de</a> · <a href="#oben">Nach oben</a></small>
-    </div>
+  <footer class="wrap">
+    <small>© 2023–2025 Projektgruppe „Ökofeminismus Zine“</small>
+    <small>Kontakt: <a href="mailto:antonia.kreutzer@gmx.de">antonia.kreutzer@gmx.de</a></small>
   </footer>
 </body>
 </html>
